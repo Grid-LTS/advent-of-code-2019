@@ -10,7 +10,7 @@ def calc_secondary(amount):
         return secondary
 
 fuel = 0
-with open("fuel.txt", "r") as f:
+with open("input/01-fuel.txt", "r") as f:
     line = f.readline()
     while line:
         module_int = int(line)
@@ -21,8 +21,6 @@ with open("fuel.txt", "r") as f:
         fuel += amount
         fuel += secondary
         line = f.readline()
-
-
 
 print(fuel)
 
