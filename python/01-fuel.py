@@ -1,3 +1,6 @@
+import os
+
+
 def calc_secondary(amount):
     secondary = amount // 3 - 2
     if secondary > 0:
@@ -9,18 +12,22 @@ def calc_secondary(amount):
     else:
         return secondary
 
+
 fuel = 0
-with open("input/01-fuel.txt", "r") as f:
+fuel_corr = 0
+python_dir = os.path.dirname(os.path.abspath(__file__))
+input = os.path.join(os.path.dirname(python_dir), "input/01-fuel.txt")
+
+with open(input, "r") as f:
     line = f.readline()
     while line:
         module_int = int(line)
-        amount =  module_int // 3 - 2
-        # print(module_int, amount)
+        amount = module_int // 3 - 2
         secondary = calc_secondary(amount)
-        print (amount, secondary)
         fuel += amount
-        fuel += secondary
+        fuel_corr += secondary
         line = f.readline()
 
-print(fuel)
-
+fuel_corr += fuel
+print(f"Fuel without correction: {fuel}")
+print(f"Fuel with correction: {fuel_corr}")
